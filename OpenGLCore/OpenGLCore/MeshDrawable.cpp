@@ -10,6 +10,7 @@ MeshDrawable::~MeshDrawable()
 {
 }
 
+
 void Core::MeshDrawable::Draw()
 {
 	Math::BuildTransformationMatrix(transMatrix, location, rotation, scale);

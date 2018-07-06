@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="JSONLoader.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="glCore.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -134,9 +135,12 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CoreIncludes.h" />
+    <ClInclude Include="JSONLoader.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="glCore.h" />
+    <ClInclude Include="GlobalDefinitions.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MeshDrawable.h" />
     <ClInclude Include="ShaderLoader.h" />

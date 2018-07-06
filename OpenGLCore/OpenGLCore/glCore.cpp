@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_access.hpp>
+#include "JSONLoader.h"
 
 using namespace Core;
 
@@ -22,6 +23,11 @@ unsigned long glCore::startTime = 0;
 float glCore::deltaTime = 0.0166f;
 unsigned long  glCore::frameStartTime = 0;
 glm::vec2 glCore::mousePosition = glm::vec2(0, 0);
+glm::vec2 Core::glCore::defaultWindowedSize;
+glm::vec4 Core::glCore::clearColor;
+
+
+Core::JSONLoader Core::glCore::settings;
 
 glCore::glCore()
 {
@@ -37,6 +43,20 @@ bool Core::glCore::Init(int argc, char ** argv, void(*start)(), void(*update)(fl
 	DBG_ASSERT(!start);
 	DBG_ASSERT(!update);
 
+	//////////////////////////////////////////////
+	// Get settings
+	settings.LoadJSON("data/settings.JSON");
+
+	std::vector<int> size = settings.GetArray<int>("windowed_start_size");
+	DBG_ASSERT(size.size() != 2);
+	defaultWindowedSize = { size[0], size[1] };
+
+	std::vector<float> ccolor = settings.GetArray<float>("clear_color");
+	DBG_ASSERT(ccolor.size() != 4);
+	clearColor = { ccolor[0], ccolor[1], ccolor[2], ccolor[3] };
+
+	//////////////////////////////////////////////
+
 	StartCallback = start;
 	UpdateCallback = update;
 	ExitCallback = exit;
@@ -44,7 +64,7 @@ bool Core::glCore::Init(int argc, char ** argv, void(*start)(), void(*update)(fl
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 
-	SetWindowSize(MAXIMISED);
+	SetWindowSize(settings.GetValue<bool>(JSON_START_MAXIMISED));
 
 	glutCreateWindow(WINDOW_TITLE);
 	glewInit();
@@ -65,7 +85,7 @@ bool Core::glCore::Init(int argc, char ** argv, void(*start)(), void(*update)(fl
 
 	StartCallback();
 
-	SetMaximiseMode(MAXIMISED);
+	SetMaximiseMode(settings.GetValue<bool>(JSON_START_MAXIMISED));
 
 	glutMainLoop();
 
@@ -117,10 +137,12 @@ glm::vec2 Core::glCore::GetMousePosition()
 	return mousePosition;
 }
 
+
+
 void Core::glCore::Flip(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(CLEAR_COLOR);
+	glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
 
 	for (unsigned int i = 0; i < scenceDrawables.size(); ++i)
 	{
@@ -207,8 +229,8 @@ void Core::glCore::SetWindowSize(bool maximised)
 	{
 		glutInitWindowPosition(10, 10);
 
-		int w = (int)(glutGet(GLUT_SCREEN_WIDTH) * WINDOWED_START_SIZE_MULTIPLIER);
-		int h = (int)(glutGet(GLUT_SCREEN_HEIGHT) * WINDOWED_START_SIZE_MULTIPLIER);
+		int w = defaultWindowedSize.x;
+		int h = defaultWindowedSize.y;
 
 		glutInitWindowSize(w, h);
 		windowSize = { w, h };
@@ -224,3 +246,4 @@ void Core::glCore::SetMaximiseMode(bool maximised)
 		ShowWindow(winHandle, SW_MAXIMIZE);
 	}
 }
+
