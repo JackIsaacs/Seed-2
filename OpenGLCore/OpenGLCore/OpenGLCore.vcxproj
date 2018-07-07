@@ -118,23 +118,27 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="glCoreSettings.cpp" />
     <ClCompile Include="JSONLoader.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="glCore.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="MeshDrawable.cpp" />
+    <ClCompile Include="println.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="UIDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\Settings.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CoreIncludes.h" />
+    <ClInclude Include="glCoreSettings.h" />
     <ClInclude Include="JSONLoader.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Drawable.h" />
@@ -143,6 +147,7 @@
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MeshDrawable.h" />
+    <ClInclude Include="println.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="UIDrawable.h" />

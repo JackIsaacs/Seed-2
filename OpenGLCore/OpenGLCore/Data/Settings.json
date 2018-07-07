@@ -1,5 +1,17 @@
 {
+  "renderer": {
+    "clear_color": [
+      0.20000000298023224,
+      0.20000000298023224,
+      0.20000000298023224,
+      1.0
+    ]
+  },
+  "window": {
     "start_maximized": false,
-	"windowed_start_size" : [ 800, 600 ],
-    "clear_color" : [ 0.2, 0.2, 0.2, 1.0 ]
+    "windowed_start_size": [
+      800.0,
+      600.0
+    ]
+  }
 }

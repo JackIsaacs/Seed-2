@@ -19,6 +19,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{722e3b23-319c-42e2-b5d5-eb161e1cf004}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{fd8bb2a1-fb06-4e46-9e18-3eca07c597ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -54,9 +57,18 @@
     <ClCompile Include="JSONLoader.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="glCoreSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="println.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Data\Settings.json">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -99,6 +111,12 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="JSONLoader.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="glCoreSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="println.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
